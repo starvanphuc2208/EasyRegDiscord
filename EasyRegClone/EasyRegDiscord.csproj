@@ -1,0 +1,412 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.ML.OnnxRuntime.1.11.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.props" Condition="Exists('..\packages\Microsoft.ML.OnnxRuntime.1.11.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DD0A171D-F29B-4BAF-884A-9D6678DCEC2C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>easy</RootNamespace>
+    <AssemblyName>EasyRegDiscord</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="10minutemail.net API, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MineBayTeam.API10MinuteMailNet.1.0.0\lib\net45\10minutemail.net API.dll</HintPath>
+    </Reference>
+    <Reference Include="AE.Net.Mail">
+      <HintPath>G:\Tool MMO\MinSoftware\MaxSystemCarePro0Unpack\MaxSystemCarePro\AE.Net.Mail.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu_UI_v1.52">
+      <HintPath>..\..\..\EasyProject\EasyChangeFB\EasyChangeFB\bin\Debug\Bunifu_UI_v1.52.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.Desktop.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DotNetZip">
+      <HintPath>..\..\..\EasyProject\EasyChangeFB\EasyChangeFB\bin\Debug\DotNetZip.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.World, Version=4.1.1.3497, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>G:\Tool MMO\MinSoftware\MaxSystemCarePro0Unpack\MaxSystemCarePro\Emgu.CV.World.dll</HintPath>
+    </Reference>
+    <Reference Include="Guna.UI">
+      <HintPath>G:\Tool MMO\regclone_facebook_full\regclone_facebook\Guna.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Guna.UI2">
+      <HintPath>G:\Tool MMO\regclone_facebook_full\regclone_facebook\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="Helpers">
+      <HintPath>..\lib\Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\..\EasyRegTelegram\EasyTelegram\bin\Debug\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Http">
+      <HintPath>G:\Tool MMO\regclone_facebook_full\regclone_facebook\Http.dll</HintPath>
+    </Reference>
+    <Reference Include="IronOcr, Version=2022.3.0.0, Culture=neutral, PublicKeyToken=c2cbcea5ea3f6d8d, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronOcr.2022.3.0\lib\net40\IronOcr.dll</HintPath>
+    </Reference>
+    <Reference Include="KAutoHelper">
+      <HintPath>G:\Tool MMO\regclone_facebook_full\regclone_facebook\KAutoHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="Leaf.xNet, Version=5.2.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Leaf.xNet.5.2.10\lib\net45\Leaf.xNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ML.OnnxRuntime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=f27f157f0a5b7bb6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ML.OnnxRuntime.Managed.1.11.0\lib\netstandard2.0\Microsoft.ML.OnnxRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Otp.NET">
+      <HintPath>G:\Tool MMO\regclone_facebook_full\regclone_facebook\Otp.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="RestSharp, Version=105.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.1.0\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="StackSoft">
+      <HintPath>..\..\EasyRegTelegram\EasyTelegram\bin\Debug\StackSoft.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>G:\Tool MMO\MinSoftware\MaxSystemCarePro0Unpack\MaxSystemCarePro\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6">
+      <HintPath>G:\Tool MMO\MinSoftware\MaxSystemCarePro0Unpack\MaxSystemCarePro\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq">
+      <HintPath>G:\Tool MMO\MinSoftware\MaxSystemCarePro0Unpack\MaxSystemCarePro\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.4.7.0\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Primitives.4.3.0\lib\net45\System.Drawing.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Text.Encodings.Web, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.5.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.5.0.0\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="TeleSharp.TL">
+      <HintPath>..\..\EasyRegTelegram\EasyTelegram\bin\Debug\TeleSharp.TL.dll</HintPath>
+    </Reference>
+    <Reference Include="TLSharp.Core">
+      <HintPath>..\..\EasyRegTelegram\EasyTelegram\bin\Debug\TLSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="WebDriver, Version=3.14.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriver.3.14.0\lib\net45\WebDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="xNet, Version=3.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\IT-VH-PHUCVV\Downloads\Telegram Desktop\maxcare-4.81\maxcare-4.8\bin\Debug\net461\xNet.dll</HintPath>
+    </Reference>
+    <Reference Include="zip">
+      <HintPath>..\..\..\EasyProject\EasyChangeFB\EasyChangeFB\bin\Debug\zip.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing">
+      <HintPath>G:\Tool MMO\regclone_facebook_full\regclone_facebook\zxing.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base.cs" />
+    <Compile Include="Helper\captchaSolve.cs" />
+    <Compile Include="LibConvert\Class10.cs" />
+    <Compile Include="ComputerInfo.cs" />
+    <Compile Include="ConvertSession.cs" />
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Login.designer.cs">
+      <DependentUpon>frm_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper.cs" />
+    <Compile Include="Helper\ADBCommands.cs" />
+    <Compile Include="Helper\ADBHelper.cs" />
+    <Compile Include="Helper\ConfigHelper.cs" />
+    <Compile Include="Helper\DatagridviewHelper.cs" />
+    <Compile Include="Helper\EmailHelper.cs" />
+    <Compile Include="Helper\FileHelper.cs" />
+    <Compile Include="Helper\JsonHelper.cs" />
+    <Compile Include="Helper\MessageBoxHelper.cs" />
+    <Compile Include="Helper\StringHelper.cs" />
+    <Compile Include="Helper\UpdateStatus.cs" />
+    <Compile Include="Helper\User32Helper.cs" />
+    <Compile Include="IniFile.cs" />
+    <Compile Include="Language.cs" />
+    <Compile Include="LibConvert\Class5.cs" />
+    <Compile Include="LibConvert\Class8.cs" />
+    <Compile Include="LibConvert\Class9.cs" />
+    <Compile Include="License\LicenseDto.cs" />
+    <Compile Include="License\LicenseHelper.cs" />
+    <Compile Include="MCommon\AutoControl.cs" />
+    <Compile Include="MCommon\Base.cs" />
+    <Compile Include="MCommon\BlackList.cs" />
+    <Compile Include="MCommon\Chrome.cs" />
+    <Compile Include="MCommon\Common.cs" />
+    <Compile Include="MCommon\CommonSQL.cs" />
+    <Compile Include="MCommon\Connector.cs" />
+    <Compile Include="MCommon\DataManage.cs" />
+    <Compile Include="MCommon\Device.cs" />
+    <Compile Include="MCommon\DeviceV2.cs" />
+    <Compile Include="MCommon\EMouseKey.cs" />
+    <Compile Include="MCommon\HARDWAREINPUT.cs" />
+    <Compile Include="MCommon\INPUT.cs" />
+    <Compile Include="MCommon\JSON_Settings.cs" />
+    <Compile Include="MCommon\KEYBDINPUT.cs" />
+    <Compile Include="MCommon\KeyCode.cs" />
+    <Compile Include="MCommon\MinProxy.cs" />
+    <Compile Include="MCommon\MOUSEINPUT.cs" />
+    <Compile Include="MCommon\MOUSEKEYBDHARDWAREINPUT.cs" />
+    <Compile Include="MCommon\PhoneHelper.cs" />
+    <Compile Include="MCommon\ProxyWeb.cs" />
+    <Compile Include="MCommon\RandomStr.cs" />
+    <Compile Include="MCommon\RECT.cs" />
+    <Compile Include="MCommon\RequestHttp.cs" />
+    <Compile Include="MCommon\RequestXNet.cs" />
+    <Compile Include="MCommon\SetupFolder.cs" />
+    <Compile Include="MCommon\ShopLike.cs" />
+    <Compile Include="MCommon\Tinsoft.cs" />
+    <Compile Include="MCommon\TinsoftProxy.cs" />
+    <Compile Include="MCommon\Tlmix.cs" />
+    <Compile Include="MCommon\TMProxy.cs" />
+    <Compile Include="MCommon\UIElement.cs" />
+    <Compile Include="MCommon\Vitech.cs" />
+    <Compile Include="MCommon\VKeys.cs" />
+    <Compile Include="MCommon\XProxy.cs" />
+    <Compile Include="MCommon\XproxyProxy.cs" />
+    <Compile Include="OpenCV\ImageClick.Designer.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Register.cs" />
+    <Compile Include="SignUpFB\UiAutomation\Bounds.cs" />
+    <Compile Include="SignUpFB\UiAutomation\ElSize.cs" />
+    <Compile Include="SignUpFB\UiAutomation\TouchLocation.cs" />
+    <Compile Include="SignUpFB\UiAutomation\UiElement.cs" />
+    <Compile Include="SignUpFB\UiAutomation\UiHelpers.cs" />
+    <Compile Include="Temp.cs" />
+    <Compile Include="TempIron.cs" />
+    <Compile Include="UI\frmConfigProxy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmConfigProxy.Designer.cs">
+      <DependentUpon>frmConfigProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmConfig.Designer.cs">
+      <DependentUpon>frmConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\fViewLD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\fViewLD.Designer.cs">
+      <DependentUpon>fViewLD.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Login.resx">
+      <DependentUpon>frm_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpenCV\ImageClick.resx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UI\frmConfig.resx">
+      <DependentUpon>frmConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmConfigProxy.resx">
+      <DependentUpon>frmConfigProxy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\fViewLD.resx">
+      <DependentUpon>fViewLD.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.manifest" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\business-analysis-concept-vector-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\computer-ram.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\cpu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\die.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\ezgif-2-dfd8c39cd22d.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\facebook_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\images-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\instagram_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\live.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\minimize1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\play_button_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\rsz_close3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\telegram_app_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\twitter_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\yannnbanner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\allowcontact.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon.ico" />
+    <None Include="Resources\btnClose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SignUpFB\Adb\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.ML.OnnxRuntime.Managed.1.11.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Managed.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ML.OnnxRuntime.Managed.1.11.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Managed.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ML.OnnxRuntime.1.11.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ML.OnnxRuntime.1.11.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ML.OnnxRuntime.1.11.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ML.OnnxRuntime.1.11.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.ML.OnnxRuntime.Managed.1.11.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Managed.targets" Condition="Exists('..\packages\Microsoft.ML.OnnxRuntime.Managed.1.11.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Managed.targets')" />
+  <Import Project="..\packages\Microsoft.ML.OnnxRuntime.1.11.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.targets" Condition="Exists('..\packages\Microsoft.ML.OnnxRuntime.1.11.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.targets')" />
+</Project>
