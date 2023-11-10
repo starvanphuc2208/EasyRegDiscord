@@ -265,6 +265,8 @@ namespace easy
 				this.dicIPDC.Add(4U, "149.154.167.91");
 				this.dicIPDC.Add(5U, "91.108.56.130");
 
+
+				//Cấu hình proxy
 				switch (this.settings_common.GetValueInt("ip_iTypeChangeIp", 0))
 				{
 					case 7:
@@ -9226,48 +9228,48 @@ namespace easy
             {
 				await DeviceV2.ClearData("com.discord", deviceID);
 
-				string proxy = "";
-				for (int j = 0; j < 10; j++)
-				{
-					this.SetStatusAccount(indexRow, "Đang lấy proxy...", null);
-                    string apiProxy = listProxyTMProxy[indexRow];
-                    proxy = GetTMProxy(apiProxy);
-                    if (proxy != "") break;
-				}
+				//string proxy = "";
+				//for (int j = 0; j < 10; j++)
+				//{
+				//	this.SetStatusAccount(indexRow, "Đang lấy proxy...", null);
+    //                string apiProxy = listProxyTMProxy[indexRow];
+    //                proxy = GetTMProxy(apiProxy);
+    //                if (proxy != "") break;
+				//}
 
-				if (proxy != "")
-				{
-					// Đổi proxy
-					Common.SetStatusDataGridView(dtgvAcc, indexRow, "cProxy", proxy);
-					Common.SetStatusDataGridView(dtgvAcc, indexRow, "cStatus", "Đang đổi proxy...");
+				//if (proxy != "")
+				//{
+				//	// Đổi proxy
+				//	Common.SetStatusDataGridView(dtgvAcc, indexRow, "cProxy", proxy);
+				//	Common.SetStatusDataGridView(dtgvAcc, indexRow, "cStatus", "Đang đổi proxy...");
 
-					if (settings_common.GetValueInt("typeChangeProxy") == 0)
-                    {
-						await DeviceV2.ClearData("tun.proxy", deviceID);
-						if (!(await ChangeTunProxy(deviceID, proxy)))
-						{
-							Common.DelayTime(1);
-							return false;
-						}
-					} else
-                    {
-						await DeviceV2.ClearData("com.cell47.College_Proxy", deviceID);
-						if (!(await ChangeLDProxy(deviceID, proxy)))
-						{
-							Common.DelayTime(1);
-							return false;
-						}
-					}
+				//	if (settings_common.GetValueInt("typeChangeProxy") == 0)
+    //                {
+				//		await DeviceV2.ClearData("tun.proxy", deviceID);
+				//		if (!(await ChangeTunProxy(deviceID, proxy)))
+				//		{
+				//			Common.DelayTime(1);
+				//			return false;
+				//		}
+				//	} else
+    //                {
+				//		await DeviceV2.ClearData("com.cell47.College_Proxy", deviceID);
+				//		if (!(await ChangeLDProxy(deviceID, proxy)))
+				//		{
+				//			Common.DelayTime(1);
+				//			return false;
+				//		}
+				//	}
 
-				}
-				else
-				{
-					// Lỗi proxy
-					this.SetStatusAccount(indexRow, "Lấy proxy lỗi!", null);
-                    Common.SetStatusDataGridView(dtgvAcc, indexRow, "cProxy", "Lỗi proxy");
-                    Common.DelayTime(1);
-					return false;
-				}
+				//}
+				//else
+				//{
+				//	// Lỗi proxy
+				//	this.SetStatusAccount(indexRow, "Lấy proxy lỗi!", null);
+    //                Common.SetStatusDataGridView(dtgvAcc, indexRow, "cProxy", "Lỗi proxy");
+    //                Common.DelayTime(1);
+				//	return false;
+				//}
 
                 await DeviceV2.OpenApp("com.discord", deviceID);
                 Common.DelayTime(5);
@@ -9277,31 +9279,36 @@ namespace easy
                     return false;
                 }
 
-                // Chọn mã vùng
-                if (!(await NhanMaVung(deviceID, indexRow)))
-                {
-                    return false;
-                }
+    //            // Chọn mã vùng
+    //            if (!(await NhanMaVung(deviceID, indexRow)))
+    //            {
+    //                return false;
+    //            }
 
-                // Chọn mã vùng
-                if (!(await NhanSearch(deviceID, indexRow)))
-                {
-                    return false;
-                }
-				Common.DelayTime(2);
-                await DeviceV2.InputText("+84", deviceID);
-                Common.DelayTime(1);
+    //            // Chọn mã vùng
+    //            if (!(await NhanSearch(deviceID, indexRow)))
+    //            {
+    //                return false;
+    //            }
+				//Common.DelayTime(2);
+    //            await DeviceV2.InputText("+84", deviceID);
+    //            Common.DelayTime(1);
 
-                // Chọn việt nam
-                if (!(await NhanVietNam(deviceID, indexRow)))
-                {
-                    return false;
-                }
+    //            // Chọn việt nam
+    //            if (!(await NhanVietNam(deviceID, indexRow)))
+    //            {
+    //                return false;
+    //            }
 
                 // Nhập số điện thoại
                 if (!(await NhanPhoneNumber(deviceID, indexRow)))
                 {
                     return false;
+                }
+				if (!phoneNumber.Contains('+'))
+				{
+					phoneNumber = "+" + phoneNumber;
+
                 }
                 await DeviceV2.InputText(phoneNumber, deviceID);
 
@@ -9326,7 +9333,9 @@ namespace easy
 				string folderPath = Application.StartupPath + "\\Screen\\";
                 Common.CreateFolder(folderPath);
                 Common.CreateFolder(string.Concat(folderPath, "\\", deviceID.ToString()));
+				int lan = 1;
 
+				GiaiCapchaLan2:
 				string fileName = Common.CreateRandomString(10, null);
 
                 ADBHelper.ScreenShot(deviceID, string.Concat(new string[] { folderPath, "\\", deviceID.ToString(), "\\", fileName, ".jpg" }));
@@ -9369,20 +9378,37 @@ namespace easy
                                 cor.y = (Int32)Math.Round(3.5 * cor.y, 0);
 
 								ADBHelper.Tap(deviceID, cor.x, cor.y);
-                                Common.DelayTime(1);
+                                //Common.DelayTime(1);
                             }
-                        // Sử dụng coordinateList;
+
+                        //hungnt
                         // Verify Answers
+                        UIElement telegramElement = await GetPointFromDumpWithKeyValue("text", "Verify Answers", deviceID);
+						if (!telegramElement.isValid)
+						{
+                            if (!(await NhanXacNhanCaptchaL2(deviceID, indexRow))) return false;
+						}
+						else{
+                            telegramElement = await GetPointFromDumpWithKeyValue("text", "Next Challenge", deviceID);
+                            if (!telegramElement.isValid)
+                            {
+                                if (lan == 1)
+                                {
+                                    // Nhấn nút Confirm
+                                    if (!(await NhanXacNhanCaptcha(deviceID, indexRow))) return false;
+                                    lan++;
+                                    goto GiaiCapchaLan2;
+                                }
 
-                        // Nhấn nút Confirm
-                        if (!(await NhanXacNhanCaptcha(deviceID, indexRow)))
-                        {
-                            return false;
-                        }
-
-                        if (!(await NhanXacNhanCaptchaL2(deviceID, indexRow)))
-                        {
-                            return false;
+                                if (lan == 2)
+                                {
+                                    if (!(await NhanXacNhanCaptchaL2(deviceID, indexRow))) return false;
+                                }
+                            }
+                            else
+                            {
+                                return false;
+                            }
                         }
                     }
                 }

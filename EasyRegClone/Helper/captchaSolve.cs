@@ -34,8 +34,8 @@ namespace easy
             {
                 string taskId = jsonResCreateTask.taskId;
                 string jsonExecTask = "{\"clientKey\":\"" + APIKey + "\",\"taskId\": " + taskId + "}";
+				Thread.Sleep(3000);
                 recall:
-				Thread.Sleep(6000);
                 string callExecTask = postRequest("https://api.2captcha.com/getTaskResult", jsonExecTask);
                 dynamic jsonResExecTask = JsonConvert.DeserializeObject(callExecTask);
 
@@ -43,7 +43,7 @@ namespace easy
                 {
                     if(jsonResExecTask.status == "processing")
                     {
-                        Thread.Sleep(3000);
+                        Thread.Sleep(1000);
                         goto recall;
                     } else if (jsonResExecTask.status == "ready")
                     {
