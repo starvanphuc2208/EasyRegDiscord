@@ -9333,7 +9333,6 @@ namespace easy
 				string folderPath = Application.StartupPath + "\\Screen\\";
                 Common.CreateFolder(folderPath);
                 Common.CreateFolder(string.Concat(folderPath, "\\", deviceID.ToString()));
-				int lan = 1;
 
 				GiaiCapchaLan2:
 				string fileName = Common.CreateRandomString(10, null);
@@ -9378,10 +9377,8 @@ namespace easy
                                 cor.y = (Int32)Math.Round(3.5 * cor.y, 0);
 
 								ADBHelper.Tap(deviceID, cor.x, cor.y);
-                                //Common.DelayTime(1);
                             }
 
-                        //hungnt
                         // Verify Answers
                         UIElement telegramElement = await GetPointFromDumpWithKeyValue("text", "Verify Answers", deviceID);
 						if (!telegramElement.isValid)
@@ -9392,23 +9389,11 @@ namespace easy
                             telegramElement = await GetPointFromDumpWithKeyValue("text", "Next Challenge", deviceID);
                             if (!telegramElement.isValid)
                             {
-                                if (lan == 1)
-                                {
-                                    // Nhấn nút Confirm
-                                    if (!(await NhanXacNhanCaptcha(deviceID, indexRow))) return false;
-                                    lan++;
-                                    goto GiaiCapchaLan2;
-                                }
-
-                                if (lan == 2)
-                                {
-                                    if (!(await NhanXacNhanCaptchaL2(deviceID, indexRow))) return false;
-                                }
+                                // Nhấn nút Confirm
+                                if (!(await NhanXacNhanCaptcha(deviceID, indexRow))) return false;
+                                goto GiaiCapchaLan2;
                             }
-                            else
-                            {
-                                return false;
-                            }
+                            else return false;
                         }
                     }
                 }
